@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Civvi - BLE</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#121212">
+</head>
+<body>
+
+  <div id="ble-banner" class="banner">
+    <button id="btn-connect">Connecter Civvi BLE</button>
+    <div id="status-text">Hors ligne</div>
+  </div>
+
+  <div id="main-content" style="display: none; flex-direction: column; flex-grow: 1;">
+    <div id="prompters"></div>
+
+    <div class="controls">
+      <input type="text" id="msg" placeholder="Rédigez votre pensée (jusqu'à 3500 caractères)..." maxlength="3500">
+      <button id="btn-send">Diffuser</button>
+    </div>
+    
+    <div id="mon-message-container" class="mon-message">
+      <div class="mon-message-label">Dernier message diffusé :</div>
+      <div id="mon-message-texte" class="mon-message-text"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log('Service Worker Enregistré'))
+        .catch(err => console.error('Erreur Service Worker:', err));
+    }
+  </script>
+</body>
+</html>
