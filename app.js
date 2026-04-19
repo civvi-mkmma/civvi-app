@@ -29,8 +29,7 @@ btnConnect.addEventListener('click', async () => {
   try {
     console.log('Demande appareil BLE...');
     bleDevice = await navigator.bluetooth.requestDevice({
-      filters: [{ namePrefix: 'civvi_6-ble' }],
-      optionalServices: [SERVICE_UUID]
+      filters: [{ services: [SERVICE_UUID] }]
     });
 
     bleDevice.addEventListener('gattserverdisconnected', onDisconnected);
